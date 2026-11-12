@@ -29,7 +29,7 @@ echo  Toan bo he thong da duoc khoi dong thanh cong!
 echo  - Module Lich chieu:   http://localhost:5173/showtime
 echo  - Module Tim kiem phim: http://localhost:5173/search
 echo  - Backend REST API:     http://localhost:8080
-echo  - H2 Console DB:        http://localhost:8080/h2-console
+echo  - Database:             MySQL (rapchieuphim on localhost:3306)
 echo ===============================================================
 echo.
 

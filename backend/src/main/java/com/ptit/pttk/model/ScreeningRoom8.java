@@ -18,10 +18,10 @@ public class ScreeningRoom8 {
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(name = "row_number")
+    @Column(name = "`row_number`")
     private Integer rowNumber;
 
-    @Column(name = "col_number")
+    @Column(name = "`col_number`")
     private Integer colNumber;
 
     @Enumerated(EnumType.STRING)

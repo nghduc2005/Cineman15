@@ -30,4 +30,6 @@ build/
 *.log
 *.mv.db
 *.trace.db
+*application-local.properties
+application-local.properties
 

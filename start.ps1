@@ -28,6 +28,6 @@ Write-Host " Toan bo he thong da duoc khoi dong thanh cong!" -ForegroundColor Ye
 Write-Host " - Module Lich chieu:   http://localhost:5173/showtime" -ForegroundColor White
 Write-Host " - Module Tim kiem phim: http://localhost:5173/search" -ForegroundColor White
 Write-Host " - Backend REST API:     http://localhost:8080" -ForegroundColor White
-Write-Host " - H2 Console DB:        http://localhost:8080/h2-console" -ForegroundColor White
+Write-Host " - Database:             MySQL (rapchieuphim on localhost:3306)" -ForegroundColor White
 Write-Host "===============================================================" -ForegroundColor Yellow
 
