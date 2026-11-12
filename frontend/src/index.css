@@ -1,0 +1,367 @@
+/* Clean minimalist wireframe styling matching docx mockups */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --border-color: #333333;
+  --border-light: #cccccc;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Mockup button colors */
+  --btn-cyan: #4dbbe6;
+  --btn-yellow: #fde047;
+  --btn-green: #86efac;
+  --btn-pink: #d8b4e2;
+  --btn-gray: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  padding: 16px;
+}
+
+/* App container */
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 2px solid var(--border-color);
+  padding: 24px;
+  background: #ffffff;
+  min-height: 90vh;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Main Top Navigation */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.main-nav-brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-tab-btn {
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background-color: #f3f4f6;
+  color: #111;
+  transition: all 0.15s ease;
+}
+
+.nav-tab-btn.active {
+  background-color: var(--btn-cyan);
+  font-weight: 700;
+  border: 2px solid #000;
+}
+
+.nav-tab-btn:hover:not(.active) {
+  background-color: #e5e7eb;
+}
+
+/* Screen Title */
+.screen-title {
+  text-align: center;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.header-accent-box {
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+  border: 1px solid var(--border-color);
+}
+
+/* Action Bars */
+.action-bar-three {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.left-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.right-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Standard Buttons matching mockups */
+.btn {
+  padding: 6px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #000;
+  outline: none;
+}
+
+.btn-cyan {
+  background-color: var(--btn-cyan);
+}
+
+.btn-yellow {
+  background-color: var(--btn-yellow);
+}
+
+.btn-green {
+  background-color: var(--btn-green);
+}
+
+.btn-pink {
+  background-color: var(--btn-pink);
+}
+
+.btn-gray {
+  background-color: var(--btn-gray);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Table Style matching wireframes */
+.wireframe-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 24px;
+}
+
+.wireframe-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.wireframe-table th {
+  border: 1px solid var(--border-color);
+  padding: 10px 8px;
+  font-weight: 600;
+  background-color: #fafafa;
+}
+
+.wireframe-table td {
+  border: 1px solid var(--border-color);
+  padding: 10px 8px;
+}
+
+.wireframe-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.wireframe-table td.empty-cell {
+  height: 38px;
+}
+
+/* Forms matching Image 2 & 4 */
+.form-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 48px;
+  margin: 30px 20px 40px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.wireframe-input, .wireframe-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  font-size: 0.95rem;
+  color: #111;
+  outline: none;
+}
+
+.wireframe-input:focus, .wireframe-select:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 1px #0284c7;
+}
+
+.form-bottom-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+/* Calculation summary panel */
+.calc-summary-panel {
+  margin: 20px 20px 0;
+  padding: 14px 18px;
+  border: 1px dashed var(--border-color);
+  background-color: #f9fafb;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.calc-item-label {
+  color: #555;
+  font-size: 0.82rem;
+}
+
+.calc-item-value {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Movie Details Layout matching Image 4 */
+.movie-detail-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 20px 40px;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.detail-full-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-box {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  min-height: 38px;
+  background-color: #fff;
+  font-size: 0.95rem;
+}
+
+.poster-preview-wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.poster-image {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+}
+
+/* Alerts and Modals */
+.alert-box {
+  padding: 10px 14px;
+  border: 1px solid;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert-warning {
+  background-color: #fefce8;
+  border-color: #ca8a04;
+  color: #854d0e;
+}
+
+.alert-danger {
+  background-color: #fef2f2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.alert-success {
+  background-color: #f0fdf4;
+  border-color: #22c55e;
+  color: #166534;
+}
+
+/* Modal confirmation */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #ffffff;
+  border: 2px solid var(--border-color);
+  padding: 24px 30px;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}

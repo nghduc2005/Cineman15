@@ -1,0 +1,9 @@
+{
+  "name": "cineman-pttk-btl",
+  "version": "1.0.0",
+  "description": "He thong quan ly rap chieu phim CineMan - PTTK BTL Nhom 8",
+  "scripts": {
+    "start": "cmd /c start.bat"
+  }
+}
+
