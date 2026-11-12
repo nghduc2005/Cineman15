@@ -1,93 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ShowtimeManageScreen8 from './components/ShowtimeManageScreen8';
 import ScheduleShowtimeScreen8 from './components/ScheduleShowtimeScreen8';
 import SearchMovieInformationScreen8 from './components/SearchMovieInformationScreen8';
 import MovieInformationScreen8 from './components/MovieInformationScreen8';
 
 /**
- * Điều phối luồng giao diện giữa 2 module chính theo đặc tả BTL:
- * 1. Quản lý lịch chiếu (danh sách lịch chiếu -> form lên lịch chiếu mới).
- * 2. Tìm kiếm thông tin phim (bảng tìm kiếm -> màn hình xem chi tiết phim).
+ * Định tuyến 2 giao diện độc lập qua react-router-dom:
+ * - Module Lên lịch chiếu: đường dẫn /showtime (danh sách) và /showtime/schedule (thêm mới).
+ * - Module Tìm kiếm thông tin phim: đường dẫn /search (tìm kiếm) và /search/:id (chi tiết phim).
+ * Giao diện hoàn toàn không có khung viền ngoài và không có nút chuyển tab theo yêu cầu tối giản.
  */
 export default function App() {
-  const [activeModule, setActiveModule] = useState('showtimes');
-  const [showtimeSubScreen, setShowtimeSubScreen] = useState('list');
-  const [refreshShowtimeKey, setRefreshShowtimeKey] = useState(0);
-
-  const [movieSubScreen, setMovieSubScreen] = useState('search');
-  const [selectedMovieId, setSelectedMovieId] = useState(null);
-
-  const handleSelectModule = (mod) => {
-    setActiveModule(mod);
-    if (mod === 'showtimes') {
-      setShowtimeSubScreen('list');
-    } else {
-      setMovieSubScreen('search');
-    }
-  };
-
-  const handleShowtimeCreated = () => {
-    setShowtimeSubScreen('list');
-    setRefreshShowtimeKey((prev) => prev + 1);
-  };
-
-  const handleSelectMovieForDetail = (id) => {
-    setSelectedMovieId(id);
-    setMovieSubScreen('detail');
-  };
-
   return (
-    <div className="app-container">
-      <header className="main-nav">
-        <div className="main-nav-brand">
-          HỆ THỐNG QUẢN LÝ RẠP CHIẾU PHIM (CineMan)
-        </div>
+    <BrowserRouter>
+      <div className="app-container">
+        <main>
+          <Routes>
+            {/* Chuyển hướng mặc định sang /showtime */}
+            <Route path="/" element={<Navigate to="/showtime" replace />} />
 
-        <nav className="nav-tabs">
-          <button
-            type="button"
-            className={`nav-tab-btn ${activeModule === 'showtimes' ? 'active' : ''}`}
-            onClick={() => handleSelectModule('showtimes')}
-          >
-            Quản lý lịch chiếu
-          </button>
+            {/* Giao diện 1: Module Lịch chiếu */}
+            <Route path="/showtime" element={<ShowtimeManageScreen8 />} />
+            <Route path="/showtime/schedule" element={<ScheduleShowtimeScreen8 />} />
+            <Route path="/showtimes" element={<Navigate to="/showtime" replace />} />
 
-          <button
-            type="button"
-            className={`nav-tab-btn ${activeModule === 'movies' ? 'active' : ''}`}
-            onClick={() => handleSelectModule('movies')}
-          >
-            Tìm kiếm thông tin phim
-          </button>
-        </nav>
-      </header>
+            {/* Giao diện 2: Module Tìm kiếm thông tin phim */}
+            <Route path="/search" element={<SearchMovieInformationScreen8 />} />
+            <Route path="/search/:id" element={<MovieInformationScreen8 />} />
 
-      <main>
-        {activeModule === 'showtimes' ? (
-          showtimeSubScreen === 'list' ? (
-            <ShowtimeManageScreen8
-              key={refreshShowtimeKey}
-              onNavigateToSchedule={() => setShowtimeSubScreen('create')}
-            />
-          ) : (
-            <ScheduleShowtimeScreen8
-              onNavigateBack={() => setShowtimeSubScreen('list')}
-              onShowtimeCreated={handleShowtimeCreated}
-            />
-          )
-        ) : (
-          movieSubScreen === 'search' ? (
-            <SearchMovieInformationScreen8
-              onSelectMovie={handleSelectMovieForDetail}
-            />
-          ) : (
-            <MovieInformationScreen8
-              movieId={selectedMovieId}
-              onNavigateBack={() => setMovieSubScreen('search')}
-            />
-          )
-        )}
-      </main>
-    </div>
+            {/* Đường dẫn không xác định chuyển về /showtime */}
+            <Route path="*" element={<Navigate to="/showtime" replace />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }

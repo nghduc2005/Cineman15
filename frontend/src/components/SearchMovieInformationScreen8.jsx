@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { showtimeApi } from '../api/showtimeApi';
 
 /**
@@ -6,6 +7,7 @@ import { showtimeApi } from '../api/showtimeApi';
  * xem các thông tin tổng quan và điều hướng xem chi tiết từng bộ phim.
  */
 export default function SearchMovieInformationScreen8({ onSelectMovie }) {
+  const navigate = useNavigate();
   const [keyword, setKeyword] = useState('');
   const [movieList, setMovieList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -153,7 +155,10 @@ export default function SearchMovieInformationScreen8({ onSelectMovie }) {
               <tr 
                 key={movie.id || index}
                 style={{ cursor: 'pointer' }}
-                onClick={() => onSelectMovie && onSelectMovie(movie.id)}
+                onClick={() => {
+                  if (onSelectMovie) onSelectMovie(movie.id);
+                  else navigate(`/search/${movie.id}`);
+                }}
                 title="Nhấp để xem chi tiết phim"
               >
                 <td>{index + 1}</td>
@@ -172,6 +177,7 @@ export default function SearchMovieInformationScreen8({ onSelectMovie }) {
                     onClick={(e) => {
                       e.stopPropagation();
                       if (onSelectMovie) onSelectMovie(movie.id);
+                      else navigate(`/search/${movie.id}`);
                     }}
                   >
                     Chi tiết

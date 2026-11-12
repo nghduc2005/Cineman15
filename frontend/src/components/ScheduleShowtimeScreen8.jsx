@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { showtimeApi } from '../api/showtimeApi';
 
 /**
@@ -6,6 +7,7 @@ import { showtimeApi } from '../api/showtimeApi';
  * bản dịch và phòng chiếu; tự động tính toán giờ kết thúc và kiểm tra các điều kiện ràng buộc/ngoại lệ.
  */
 export default function ScheduleShowtimeScreen8({ onNavigateBack, onShowtimeCreated }) {
+  const navigate = useNavigate();
   const [movieList, setMovieList] = useState([]);
   const [timeSlotList, setTimeSlotList] = useState([]);
   const [screeningRoomList, setScreeningRoomList] = useState([]);
@@ -225,6 +227,8 @@ export default function ScheduleShowtimeScreen8({ onNavigateBack, onShowtimeCrea
         onShowtimeCreated();
       } else if (onNavigateBack) {
         onNavigateBack();
+      } else {
+        navigate('/showtime');
       }
     } catch (err) {
       console.error('Lỗi khi lên lịch chiếu:', err);
@@ -247,7 +251,11 @@ export default function ScheduleShowtimeScreen8({ onNavigateBack, onShowtimeCrea
 
   const handleConfirmCancel = () => {
     setShowCancelModal(false);
-    if (onNavigateBack) onNavigateBack();
+    if (onNavigateBack) {
+      onNavigateBack();
+    } else {
+      navigate('/showtime');
+    }
   };
 
   // Price calculations for summary display (steps 9-10 in docx)

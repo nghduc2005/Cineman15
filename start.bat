@@ -26,9 +26,10 @@ start http://localhost:5173
 echo.
 echo ===============================================================
 echo  Toan bo he thong da duoc khoi dong thanh cong!
-echo  - Frontend Web UI:  http://localhost:5173
-echo  - Backend REST API: http://localhost:8080
-echo  - H2 Console DB:    http://localhost:8080/h2-console
+echo  - Module Lich chieu:   http://localhost:5173/showtime
+echo  - Module Tim kiem phim: http://localhost:5173/search
+echo  - Backend REST API:     http://localhost:8080
+echo  - H2 Console DB:        http://localhost:8080/h2-console
 echo ===============================================================
 echo.
 

@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { showtimeApi } from '../api/showtimeApi';
 
 /**
  * Màn hình Xem chi tiết thông tin phim, phục vụ hiển thị toàn bộ thuộc tính của một bộ phim
  * bao gồm poster, trailer video (qua iframe), thông tin phân loại, bản dịch và đoàn làm phim.
  */
-export default function MovieInformationScreen8({ movieId, onNavigateBack }) {
+export default function MovieInformationScreen8({ movieId: propMovieId, onNavigateBack: propNavigateBack }) {
+  const { id: paramMovieId } = useParams();
+  const navigate = useNavigate();
+  const movieId = propMovieId || paramMovieId;
+  const onNavigateBack = propNavigateBack || (() => navigate('/search'));
+
   const [movieInformation, setMovieInformation] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');

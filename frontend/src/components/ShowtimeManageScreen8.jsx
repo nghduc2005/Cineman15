@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { showtimeApi } from '../api/showtimeApi';
 
 /**
@@ -6,6 +7,7 @@ import { showtimeApi } from '../api/showtimeApi';
  * và cung cấp nút điều hướng sang màn hình Lên lịch chiếu mới.
  */
 export default function ShowtimeManageScreen8({ onNavigateToSchedule }) {
+  const navigate = useNavigate();
   const [showtimeList, setShowtimeList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -81,6 +83,7 @@ export default function ShowtimeManageScreen8({ onNavigateToSchedule }) {
             onClick={(e) => {
               e.preventDefault();
               if (onNavigateToSchedule) onNavigateToSchedule();
+              else navigate('/showtime/schedule');
             }}
           >
             Thêm lịch chiếu
